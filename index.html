@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Personal Cybersecurity Awareness Guide] - Project Charter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f1eb;
+            line-height: 1.6;
+            color: #333;
+        }
+       
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+       
+        .header {
+            background: linear-gradient(135deg, #2d5d3b, #4a7c59);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+       
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 32px;
+            font-weight: bold;
+        }
+       
+        .header p {
+            margin: 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+       
+        .content {
+            padding: 40px;
+        }
+       
+        .student-info {
+            background: #e8f5e8;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 5px solid #2d5d3b;
+        }
+       
+        .student-info h3 {
+            color: #2d5d3b;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+       
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+       
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+       
+        .info-label {
+            font-weight: 600;
+            color: #2d5d3b;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+       
+        .info-value {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+       
+        .section {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+       
+        .section-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+       
+        .section-title {
+            margin: 0;
+            color: #2d5d3b;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+       
+        .section-content {
+            padding: 20px;
+        }
+       
+        .placeholder {
+            background: #fff3cd;
+            border: 2px dashed #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+            text-align: center;
+            color: #856404;
+            font-style: italic;
+        }
+       
+        .completed-work {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+       
+        .completed-header {
+            color: #155724;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+       
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+       
+        .scope-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid transparent;
+        }
+       
+        .scope-card.in-scope {
+            border-left-color: #28a745;
+        }
+       
+        .scope-card.roadmap {
+            border-left-color: #17a2b8;
+        }
+       
+        .scope-card.out-scope {
+            border-left-color: #dc3545;
+        }
+       
+        .scope-card h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+       
+        .stakeholder-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+       
+        .stakeholder-table th {
+            background: #2d5d3b;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+       
+        .stakeholder-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 13px;
+        }
+       
+        .stakeholder-table tr:hover {
+            background: #f8f9fa;
+        }
+       
+        .power-interest-grid {
+            margin: 20px 0;
+            text-align: center;
+        }
+       
+        .grid-placeholder {
+            background: #e9ecef;
+            border: 2px dashed #6c757d;
+            border-radius: 10px;
+            padding: 40px 20px;
+            color: #6c757d;
+            font-style: italic;
+        }
+       
+        .instructions {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #1976d2;
+        }
+       
+        .instructions strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+       
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+           
+            .header {
+                padding: 20px;
+            }
+           
+            .content {
+                padding: 20px;
+            }
+           
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+           
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>[Personal Cybersecurity Awareness Guide]</h1>
+            <p>Project Charter - Managing IT Projects Course</p>
+        </div>
+       
+        <div class="content">
+            <!-- Student Information -->
+            <div class="student-info">
+                <h3>Student Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Student Name:</div>
+                        <div class="info-value">Berenice Fuentes</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Course:</div>
+                        <div class="info-value">Managing IT Projects</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Semester:</div>
+                        <div class="info-value">Fall Semester 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 1: Project Title & Description -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📋 1. Project Title & Description</h2>
+                </div>
+                   
+                    <div class="placeholder">
+                        <h3>Project Title: Personal Cybersecurity Awareness Guide</h3>
+                        <p>This project will create a clear and accessible cybersecurity guide that teaches everyday internet users how to protect themselves from common online threats such as phishing, weak passwords, and unsafe browsing. The guide will provide step-by-step tips, examples, and best practices to promote safer digital habits. It will benefit students, professionals, and the general public by increasing awareness and reducing the risk of cyberattacks.</p>
+                       
+                </div>
+            </div>
+
+            <!-- Section 2: Vision, Mission & Strategy Alignment -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">🎯 2. Vision, Mission & Strategy Alignment</h2>
+                </div>
+                   
+                    <div class="placeholder">
+                        <h4>Personal Mission Connection:</h4>
+                        <p>This project supports my personal mission of helping others stay safe and confident in the digital world. It reflects my values of education, security, and empowerment by providing people with practical tools to protect themselves online.</p>
+                       
+                        <h4>Vision Alignment:</h4>
+                        <p>Completing this project moves me closer to my long-term vision of working in the cybersecurity field, where I can combine technical knowledge with communication skills to educate and protect communities. It demonstrates my ability to translate complex cybersecurity concepts into easy-to-understand guidance.</p>
+                       
+                        <h4>Strategic Goal Support:</h4>
+                        <p>This project advances my strategic goal of building a strong foundation in cybersecurity knowledge while also improving my project management and communication skills. It fits into my bigger picture by serving as both a learning experience and a portfolio piece that showcases my commitment to making cybersecurity more accessible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Business Case -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">💼 3. Business Case & Justification</h2>
+                </div>
+                   
+                    <div class="placeholder">
+                        <h4>Professional Value:</h4>
+                        <p>This project will strengthen my career by giving me hands-on experience in cybersecurity awareness and digital safety education. It will improve my portfolio with a tangible deliverable that demonstrates my ability to simplify technical concepts for diverse audiences. Additionally, it builds transferable skills such as research, writing, and communication that are valuable across cybersecurity and IT careers.</p>
+                       
+                        <h4>Personal Value:</h4>
+                        <p>On a personal level, this project will improve my problem-solving and critical-thinking skills as I identify common online risks and create effective solutions. It will also give me personal satisfaction in knowing I am helping others stay safe online, while boosting my confidence in my ability to teach and guide others.</p>
+                       
+                        <h4>Learning Outcomes:</h4>
+                        <p>Through this project, I will learn practical cybersecurity best practices, strengthen my project management skills, and gain experience in developing clear and accessible educational materials. I will also build industry knowledge about current cyber threats and user behaviors, preparing me for future opportunities in the cybersecurity field.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: High-Level Scope -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📏 4. High-Level Scope</h2>
+                </div>
+                   
+                    <div class="scope-grid">
+                        <div class="scope-card in-scope">
+                            <h4>✅ In Scope for Semester Project</h4>
+                            <div class="placeholder">
+
+                                <ul>
+                                    <li>Develop a cybersecurity guide covering safe browsing, phishing awareness, and password management</li>
+                                    <li>Include practical checklists and step-by-step safety tips</li>
+                                    <li>Provide examples of common online scams and how to avoid them</li>
+                                    <li>Deliver the guide in both PDF and presentation format</li>
+                                </ul>
+                            </div>
+                        </div>
+                       
+                        <div class="scope-card roadmap">
+                            <h4>🗺️ Roadmap Items (≤6 Months)</h4>
+                            <div class="placeholder">
+                               
+                                <ul>
+                                    <li>Add interactive elements such as short quizzes or scenarios to test user knowledge</li>
+                                    <li>Transalte the guide into other languages</li>
+                                    <li>Develop a simple website version of the guide</li>
+                                </ul>
+                            </div>
+                        </div>
+                       
+                        <div class="scope-card out-scope">
+                            <h4>❌ Out of Scope</h4>
+                            <div class="placeholder">
+                               
+                                <ul>
+                                    <li>Advanced technical training or coding lessons</li>
+                                    <li>Setting up cybersecurity tools or software for users</li>
+                                    <li>Turning the project into a nationwide awareness campaign.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Section 5: Stakeholder Register -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">👥 5. Stakeholder Register</h2>
+                </div>
+                <div class="section-content">
+                    <div class="completed-work">
+                        <div class="completed-header">
+                   
+                    <table class="stakeholder-table">
+                        <thead>
+                            <tr>
+                                <th>Stakeholder</th>
+                                <th>Category</th>
+                                <th>Role/Interest</th>
+                                <th>Power</th>
+                                <th>Interest</th>
+                                <th>Engagement Strategy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="Stakeholder">Instructor</td>
+                                <td class="Category">Internal</td>
+                                <td class="Role/Interest">Provide guidance and sets evaluation criteria </td>
+                                <td class="Power">High</td>
+                                <td class="Interest">High</td>
+                                <td class="Engagment Strategy">Check in regularly and ask for feedback</td>
+                            </tr>
+                            <tr>
+                                <td>Classmates</td>
+                    <td>Internal</td>
+                    <td>Peer reviewers </td>
+                    <td>Medium</td>
+                    <td>High</td>
+                    <td>Share drafts and ask for feedback</td>
+                </tr>
+                <tr>
+                    <td>Family/Friends</td>
+                    <td>External</td>
+                    <td>Test audience for guide usability</td>
+                    <td>Low</td>
+                    <td>Medium</td>
+                    <td>Provide guide and ask for simple feedback</td>
+                </tr>
+                <tr>
+                    <td>School Library</td>
+                    <td>Internal</td>
+                    <td>help find research sources</td>
+                    <td>Medium</td>
+                    <td>Medium</td>
+                    <td>ask for help with reliable sources when needed</td>
+                </tr>
+                <tr>
+                    <td>IT Club</td>
+                    <td>Internal/External</td>
+                    <td>Provide technical advice</td>
+                    <td>Medium</td>
+                    <td>Medium</td>
+                    <td>Engage closely and consult tips</td>
+                </tr>
+                <tr>
+                    <td>Social Media Followers</td>
+                    <td>External</td>
+                    <td>Help spread awareness and provide feedback</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Keep informed via posts and updates</td>
+                </tr>
+                <tr>
+                    <td>Online Safety Blogs</td>
+                    <td>External</td>
+                    <td>Reference materials for content accuracy</td>
+                    <td>Medium</td>
+                    <td>low</td>
+                    <td>use reliable references</td>
+                </tr>
+                <tr>
+                    <td>Local Community Center</td>
+                    <td>external</td>
+                    <td>Potential group to share guide with</td>
+                    <td>low</td>
+                    <td>Medium</td>
+                    <td>share guide and collect feedback from community members</td>
+                </tr>
+            </tbody>
+        </table>
+                                <td colspan="6" class="instructions">
+                     <div class="power-interest-grid">
+  <h4>Power-Interest Grid Visualization</h4>
+
+  <div class="grid-placeholder">
+    <div class="image-container">
+      <!-- Replace with your actual image file -->
+      <img src="output.png" alt="Power-Interest Grid" style="width:100%; border:1px solid #ccc; border-radius:8px;">
+    </div>
+  </div>
+</div>              
+                   
+                   
+
+   
+  </div>
+</div>
+                            <br><br>
+                           
+                        </div>
+                    </div>
+               
+
+            <!-- Section 6: Deliverables chart -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📝 6.Deliverables chart</h2>
+                </div>
+                <div class="section-content">
+                    <table class="deliverables-chart">
+                        <table class="deliverable-table">
+                      <thead>
+                <tr>
+                    <th>Deliverable Name</th>
+                    <th>Type</th>
+                    <th>SMART Description</th>
+                    <th>Definition of Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Project Proposal Document</td>
+                    <td> Tangible</td>
+                    <td>Write a proposal that clearly states project goals, scope, timeline, and resources by Sep 30th.</td>
+                    <td>Document submitted in PDF format, includes goals, scope, timeline, and resources.</td>
+                </tr>
+                <tr>
+                    <td>Project Schedule/Timeline</td>
+                    <td>Intangible</td>
+                    <td>Create a detailed project schedule (calendar) listing all major tasks and deadlines by Oct 15th.</td>
+                    <td>Timeline submitted and data included.</td>
+                </tr>
+                <tr>
+                    <td>Prototype/Draft Version</td>
+                    <td>Tangible</td>
+                    <td>Build a working draft or prototype of the project (e.g., website mockup, workflow diagram) by Nov 1st.</td>
+                    <td>Draft shared with classmates for feedback collection. Demonstrates at least 50% of planned functionality.</td>
+                </tr>
+                <tr>
+                    <td>Final Project Deliverable</td>
+                    <td>Tangible</td>
+                    <td>Complete and submit the full project (document, system, presentation) that meets all stated objectives by Nov 30th.</td>
+                    <td>Submitted on time, meets 100% of requirements, tested for quality.</td>
+                </tr>
+                <tr>
+                    <td>Presentation</td>
+                    <td>Outcome</td>
+                    <td>Present project findings in a 10–12 minute presentation with slides by Dec 10th.</td>
+                    <td>Slides prepared and shared, presentation delivered within time limit.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .deliverables-chart {
+        margin-top: 20px;
+        overflow-x: auto;
+    }
+    .deliverable-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .deliverable-table th, .deliverable-table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+    }
+    .deliverable-table th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+    .deliverable-table tr:nth-child(even) {
+        background-color: #fafafa;
+    }
+</style>      
+      <!-- Budget Estimate Section -->
+<style>
+  .budget-card{
+    background:#ffffff;
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(16,24,40,0.06);
+    padding:16px;
+    margin-top:20px;
+  }
+  .budget-card h3{
+    margin:0 0 12px 0;
+    font-size:1.2rem;
+  }
+  .budget-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:16px;
+    font-size:0.92rem;
+  }
+  .budget-table th, .budget-table td{
+    border:1px solid #e5e7eb;
+    padding:8px 10px;
+    text-align:left;
+    vertical-align:top;
+  }
+  .budget-table th{
+    background:#f9fafb;
+    font-weight:600;
+    font-size:0.9rem;
+  }
+  .budget-section-title{
+    background:#f1f5f9;
+    font-weight:700;
+    text-transform:uppercase;
+    text-align:left;
+  }
+  .budget-subtotal{
+    background:#fef9c3;
+    font-weight:600;
+    text-align:right;
+  }
+  .budget-total{
+    background:#dcfce7;
+    font-weight:700;
+    text-align:right;
+  }
+  .note{
+    font-size:0.85rem;
+    color:#6b7280;
+    margin-top:8px;
+  }
+</style>
+
+<div class="budget-card">
+  <h3>💰 7.Budget Estimate</h3>
+  <div style="overflow-x:auto;">
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>Cost Item</th>
+          <th>Quantity/Hours</th>
+          <th>Rate/Price</th>
+          <th>Total Cost</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Labor -->
+        <tr><td colspan="5" class="budget-section-title">Labor Costs</td></tr>
+        <tr><td>Content Writer</td><td>120 hrs</td><td>$25.00</td><td>$3,000.00</td><td>Research + write cybersecurity sections</td></tr>
+        <tr><td>Graphic Designer</td><td>90 hrs</td><td>$30.00</td><td>$2,700.00</td><td>Design layout, visuals, infographics</td></tr>
+        <tr><td>Web Developer</td><td>78 hrs</td><td>$40.00</td><td>$3,120.00</td><td>Website setup, uploads, testing</td></tr>
+        <tr><td>Marketing Coordinator</td><td>72 hrs</td><td>$28.00</td><td>$2,016.00</td><td>Social media promotion & outreach</td></tr>
+        <tr><td>Business Analyst</td><td>60 hrs</td><td>$35.00</td><td>$2,100.00</td><td>Oversight, approvals, coordination</td></tr>
+        <tr><td colspan="3" class="budget-subtotal">Labor Subtotal</td><td colspan="2">$12,936.00</td></tr>
+
+        <!-- Equipment/Software -->
+        <tr><td colspan="5" class="budget-section-title">Equipment/Software</td></tr>
+        <tr><td>Canva Pro License</td><td>3 months</td><td>$12.99</td><td>$39.00</td><td>Used for creating visuals/layout</td></tr>
+        <tr><td>Grammarly Premium</td><td>3 months</td><td>$30.00</td><td>$90.00</td><td>Polishes writing for clarity</td></tr>
+        <tr><td>Adobe Stock Images</td><td>1 pack</td><td>$50.00</td><td>$50.00</td><td>High-quality graphics</td></tr>
+        <tr><td>Web Hosting + Domain</td><td>3 months</td><td>$12.00</td><td>$36.00</td><td>To host the online guide</td></tr>
+        <tr><td>Cloud Storage</td><td>3 months</td><td>$10.00</td><td>$30.00</td><td>File sharing & collaboration</td></tr>
+        <tr><td colspan="3" class="budget-subtotal">Equipment/Software Subtotal</td><td colspan="2">$245.00</td></tr>
+
+        <!-- Materials -->
+        <tr><td colspan="5" class="budget-section-title">Materials</td></tr>
+        <tr><td>Training Materials</td><td>Flat</td><td>$100.00</td><td>$100.00</td><td>Handouts/workshop materials</td></tr>
+        <tr><td>Infographic Templates</td><td>Flat</td><td>$25.00</td><td>$25.00</td><td>Pre-designed graphics</td></tr>
+        <tr><td>Printed Posters/Handouts</td><td>50 copies</td><td>$1.50</td><td>$75.00</td><td>Awareness materials for students/community</td></tr>
+
+        <tr><td colspan="3" class="budget-subtotal">Materials Subtotal</td><td colspan="2">$200.00</td></tr>
+
+        <!-- Services -->
+        <tr><td colspan="5" class="budget-section-title">Services</td></tr>
+        <tr><td>Security Audit</td><td>Flat</td><td>$200.00</td><td>$200.00</td><td>Check guide + site for safety</td></tr>
+        <tr><td>Website Hosting Support</td><td>3 months</td><td>$20.00</td><td>$60.00</td><td>Technical support for hosting</td></tr>
+        <tr><td>Translation Service</td><td>5 pages</td><td>$15.00</td><td>$75.00</td><td>Translate guide sections</td></tr>
+        <tr><td>Marketing/Outreach Service</td><td>Flat</td><td>$150.00</td><td>$150.00</td><td>Help with campaign promotion</td></tr>
+       
+        <tr><td colspan="3" class="budget-subtotal">Services Subtotal</td><td colspan="2">$485.00</td></tr>
+
+        <!-- Totals -->
+        <tr><td colspan="3" class="budget-subtotal">Subtotal Direct Costs</td><td colspan="2">$13,866.00</td></tr>
+        <tr><td colspan="3" class="budget-subtotal">Contingency Reserve (20%)</td><td colspan="2">$2,773.20</td></tr>
+        <tr><td colspan="3" class="budget-total">Total Project Budget</td><td colspan="2">$16,639.20</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <strong>Budget Breakdown (%):</strong><br>
+    Labor: 77.8% &nbsp; | &nbsp; Equipment/Software: 1.47% &nbsp; | &nbsp; Materials: 1.20% &nbsp; | &nbsp; Services: 2.91% &nbsp; | &nbsp; Contingency: 16.67%
+  </div>
+
+  <div class="note" style="margin-top:12px;">
+    <strong>Major Risks & Mitigation:</strong><br>
+    • Scope creep/additional work → Define scope clearly, change control, track requests.<br>
+    • Price fluctuations → Monitor market rates, adjust procurement.<br>
+    • Resource availability/labor shortages → Cross-train staff, backup resources, buffer schedule.<br>
+  </div>
+
+  <div class="note" style="margin-top:12px;">
+    <strong>Contingency Reasoning:</strong><br>
+    20% buffer covers common risks (scope changes, material price shifts, labor shortages) without inflating budget.
+  </div>
+</div>                
+    <!-- Section: Project Methodology & Tools -->
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">🛠️ Project Methodology & Tools</h2>
+    </div>
+    <div class="section-content">
+        <!-- Project Methodology Explanation -->
+        <div class="placeholder">
+            <h4>Project Methodology Explanation:</h4>
+            <p>For my cybersecurity guide project, I chose a <strong>Predictive Methodology</strong>. This method works well because the tasks and goals are clear from the start. It helps me plan everything step by step and finish on time.</p>
+        </div>
+
+        <!-- Project Methodology Diagram -->
+        <div class="placeholder">
+            <h4>Project Methodology Diagram:</h4>
+            <p>The diagram below shows how the Predictive method is used in this project. <p>
+            <img src="Diagram.png" alt="Project Methodology Diagram" style="width:100%; border:1px solid #ccc; border-radius:8px;">
+        </div>
+
+        <!-- Project Tool Selection Explanation -->
+        <div class="placeholder">
+            <h4>Project Tool Selection Explanation:</h4>
+            <p>I chose <strong>Microsoft Planner</strong> to organize my project. It helps me track tasks, set deadlines, and see all my work in one place. It also makes it easy to adjust tasks if needed.</p>
+        </div>
+
+        <!-- Screenshots of Project in Project Tool -->
+        <div class="placeholder">
+            <h4>Project Tool Screenshots:</h4>
+            <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                <div style="flex:1; min-width:200px;">
+                    <img src="Board.png" style="width:100%; border:1px solid #ccc; border-radius:8px;">
+                    <p style="text-align:center; font-size:12px; margin-top:5px;">Board View</p>
+                </div>
+                <div style="flex:1; min-width:200px;">
+                    <img src="Grid.png" alt="Project Grid Screenshot" style="width:100%; border:1px solid #ccc; border-radius:8px;">
+                    <p style="text-align:center; font-size:12px; margin-top:5px;">Grid View</p>
+                </div>
+                <div style="flex:1; min-width:200px;">
+                    <img src="Charts.png" alt="Project Chart Screenshot" style="width:100%; border:1px solid #ccc; border-radius:8px;">
+                    <p style="text-align:center; font-size:12px; margin-top:5px;">Chart View</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+   
+             
+</body>
+</html>
